@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         resizeMode: 'cover',
-        opacity: 0.9,
+        opacity: 0.5,
     },
     overlay: {
         flex: 1,
@@ -15,10 +15,9 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 32,
-        color: '#fafafa',
+        // color: '#fafafa',
         textAlign: 'center',
         marginBottom: 20,
-        marginTop: 50,
     },
     input: {
         backgroundColor: '#fafafa',
@@ -26,8 +25,8 @@ const styles = StyleSheet.create({
         padding: 12,
         fontSize: 16,
         marginVertical: 10,
-        // borderColor: '#ddd',
-        // borderWidth: 1,
+        borderColor: '#ddd',
+        borderWidth: 1,
     },
     submitBtn: {
         alignSelf: 'center',
@@ -58,6 +57,16 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         backgroundColor: '#ccc',
     },
+    todoItem:{
+        padding: 15,
+        backgroundColor: '#fff555',
+        borderRadius: 12,
+        marginVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        shadowColor: '#000',    
+    }
 });
 
 export default styles;
