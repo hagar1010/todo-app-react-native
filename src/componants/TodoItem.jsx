@@ -5,15 +5,33 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 import { PATHS } from "../routes/Router";
 
-const TodoItem = ({ item }) => {
+const TodoItem = ({ item, onComplate, onDelete }) => {
   const { navigate } = useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigate(PATHS.DETAILS, { todo: item })}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => navigate(PATHS.DETAILS, { todo: item })}
+    >
       <View style={styles.todoItem}>
-        <Text>{item.title}</Text>
-        <EvilIcons name="trash" size={24} color="red" />
-        <AntDesign name="checkcircleo" size={24} color="green" />
+        {item.completed ? (
+          <Text style={{ textDecorationLine: "line-through", color: "#aaa" }}>
+            {item.title}
+          </Text>
+        ) : (
+          <Text>{item.title}</Text>
+        )}
+        <View style={styles.row}>
+          <TouchableOpacity onPress={() => onDelete(item.id)}>
+            <EvilIcons name="trash" size={24} color="#fa69b4" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => onComplate(item.id)}>
+            <AntDesign
+              name={item.completed ? "checkcircle" : "checkcircleo"}
+              size={20}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
   );

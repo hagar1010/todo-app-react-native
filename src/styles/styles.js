@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         resizeMode: 'cover',
-        opacity: 0.5,
+        opacity: 0.7,
     },
-    overlay: {
+    container: {
         flex: 1,
         padding: 20,
     },
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         fontSize: 32,
         // color: '#fafafa',
         textAlign: 'center',
+        // marginTop: 30,
         marginBottom: 20,
     },
     input: {
@@ -53,19 +54,29 @@ const styles = StyleSheet.create({
     },
     filterBtn: {
         paddingVertical: 8,
-        paddingHorizontal: 30,
+        paddingHorizontal: 25,
         borderRadius: 12,
-        backgroundColor: '#ccc',
+        backgroundColor: '#ddd',
     },
     todoItem:{
         padding: 15,
-        backgroundColor: '#fff555',
+        borderColor: '#ddd',
+        borderWidth: 1,
+        // backgroundColor: '#fedeee',
+        backgroundColor: '#fafafa',
         borderRadius: 12,
         marginVertical: 10,
         flexDirection: 'row',
+        gap: 10,
         justifyContent: 'space-between',
         alignItems: 'center',
         shadowColor: '#000',    
+    },
+    row:{
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+        gap: 10,
     }
 });
 

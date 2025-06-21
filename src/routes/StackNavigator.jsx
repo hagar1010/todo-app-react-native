@@ -11,17 +11,12 @@ const StackNavigator = () => {
       <Stack.Screen
         name={PATHS.HOME}
         component={Home}
-        options={{
-          headerShown: false,
-        //   headerBackTitle: "Back",
-        }}
       />
       <Stack.Screen
         name={PATHS.DETAILS}
         component={TodoDetails}
         options={{
           headerShown: true,
-
           headerTitle: "Details",
         }}
       />
