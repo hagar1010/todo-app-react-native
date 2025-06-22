@@ -5,7 +5,7 @@ import Profile from "../pages/Profile";
 import StackNavigator from "./StackNavigator";
 import Ionicons from "@expo/vector-icons/Ionicons";
 // import { StatusBar } from "expo-status-bar";
-import { StatusBar} from "react-native";
+import { StatusBar,Text} from "react-native";
 
 const Tab = createBottomTabNavigator();
 export const PATHS = {
@@ -40,9 +40,10 @@ const Router = () => {
 
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-            // tabBarLabel: ({ focused }) => (focused ? route.name : null),
+            tabBarLabel: ({ focused }) => (focused ? <Text style={{color:"#fa69b4",fontSize:10}}>{route.name}</Text> : null),
             tabBarActiveTintColor: "#fa69b4",
-            tabBarInactiveTintColor: "gray",
+            // tabBarInactiveTintColor: "gray",
+            tabBarActiveBackgroundColor: "#333",
             tabBarStyle: {
               // paddingVertical: 50,
               backgroundColor: "#222",
@@ -51,16 +52,26 @@ const Router = () => {
               // bottom: 0,
               // left: 0,
               // right: 0,
-              height: 70,
+              borderTopEndRadius: 20,
+              borderTopStartRadius: 20,
+              // padding: 5,
+              // justifyContent: "center",
+              // height: 80,
             },
+            headerStyle: {
+              backgroundColor: "#222",
+            },
+            headerTitleStyle:{
+              color: "#fafafa",
+            }
           })}
         >
           <Tab.Screen
             name={PATHS.HOME}
             component={StackNavigator}
-            options={{
-              headerShown: false,
-            }}
+            // options={{
+            //   headerShown: false,
+            // }}
           />
           <Tab.Screen name={PATHS.COMPLETED} component={Completed} />
           <Tab.Screen name={PATHS.PROFILE} component={Profile} />

@@ -11,21 +11,26 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        padding: 20,
+        // backgroundColor: "#fff",
+        // alignItems: "center",
+        justifyContent: "center",
+        paddingHorizontal: 15,
+        paddingTop: 10,
     },
     title: {
         fontSize: 32,
-        // color: '#fafafa',
+        color: '#fa69b4',
+        fontWeight: 'bold',
         textAlign: 'center',
         // marginTop: 30,
-        marginBottom: 20,
+        marginBottom: 10,
     },
     input: {
         backgroundColor: '#fafafa',
         borderRadius: 12,
         padding: 12,
         fontSize: 16,
-        marginVertical: 10,
+        marginVertical: 8,
         borderColor: '#ddd',
         borderWidth: 1,
     },
@@ -40,12 +45,12 @@ const styles = StyleSheet.create({
     },
     submitBtnText: {
         color: '#fafafa',
-        fontSize: 16,
+        fontSize: 15,
     },
     dividerLine: {
         height: 2,
         backgroundColor: '#aaa',
-        marginVertical: 15,
+        marginVertical: 10,
     },
     filterContainer: {
         flexDirection: 'row',
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         backgroundColor: '#ddd',
     },
-    todoItem:{
+    todoItem: {
         padding: 15,
         borderColor: '#ddd',
         borderWidth: 1,
@@ -70,9 +75,9 @@ const styles = StyleSheet.create({
         gap: 10,
         justifyContent: 'space-between',
         alignItems: 'center',
-        shadowColor: '#000',    
+        shadowColor: '#000',
     },
-    row:{
+    row: {
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',

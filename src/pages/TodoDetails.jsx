@@ -1,13 +1,3 @@
-// import { Text } from 'react-native'
-// const TodoDetails = () => {
-//   return (
-//     <Text>TodoDetails</Text>
-//   )
-// }
-
-// export default TodoDetails
-
-
 import { Text, View, StyleSheet } from "react-native";
 import { useRoute } from "@react-navigation/native";
 

@@ -1,13 +1,17 @@
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styles from "../styles/styles";
+import {useDispatch} from "react-redux";
 import { useState } from "react";
-const TodoForm = ({ setTodos }) => {
+import { addTodo } from "../redux/slices/TodosSlice";
+const TodoForm = () => {//{ setTodos }
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleAddTodo = (todo) => {
-    setTodos((prevTodos) => [...prevTodos, todo]);
-  };
+  const dispatch = useDispatch();
+
+  // const handleAddTodo = (todo) => {
+  //   setTodos((prevTodos) => [...prevTodos, todo]);
+  // };
 
   const handleSubmit = () => {
     if (!title) return;
@@ -17,7 +21,8 @@ const TodoForm = ({ setTodos }) => {
       description,
       completed: false,
     };
-    handleAddTodo(todo);
+    // handleAddTodo(todo);
+    dispatch(addTodo(todo));
     setTitle("");
     setDescription("");
   };

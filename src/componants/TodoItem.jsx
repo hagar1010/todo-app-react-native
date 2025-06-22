@@ -1,33 +1,57 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import styles from "../styles/styles";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 import { PATHS } from "../routes/Router";
+import { useDispatch } from "react-redux";
+import {toggleCompleted, deleteTodo } from "../redux/slices/TodosSlice";
 
-const TodoItem = ({ item, onComplate, onDelete }) => {
+
+const TodoItem = ({ todo }) => {
   const { navigate } = useNavigation();
-
+  const dispatch = useDispatch();
+  const confirmDelete = (id) => {
+    Alert.alert(
+      "Delete Todo",
+      "Are you sure you want to delete this todo?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: () => dispatch(deleteTodo(id))
+        },
+      ],
+      { cancelable: true }
+    );
+  };
+  
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => navigate(PATHS.DETAILS, { todo: item })}
+      onPress={() => navigate(PATHS.DETAILS, { todo: todo })}
     >
       <View style={styles.todoItem}>
-        {item.completed ? (
+        {todo.completed ? (
           <Text style={{ textDecorationLine: "line-through", color: "#aaa" }}>
-            {item.title}
+            {todo.title}
           </Text>
         ) : (
-          <Text>{item.title}</Text>
+          <Text>{todo.title}</Text>
         )}
         <View style={styles.row}>
-          <TouchableOpacity onPress={() => onDelete(item.id)}>
+          <TouchableOpacity onPress={() => confirmDelete(todo.id)}>
             <EvilIcons name="trash" size={24} color="#fa69b4" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => onComplate(item.id)}>
+          <TouchableOpacity
+            onPress={() => dispatch(toggleCompleted(todo.id))}
+          >
             <AntDesign
-              name={item.completed ? "checkcircle" : "checkcircleo"}
+              name={todo.completed ? "checkcircle" : "checkcircleo"}
               size={20}
             />
           </TouchableOpacity>
