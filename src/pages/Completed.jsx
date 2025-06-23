@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import TodoItem from "../componants/TodoItem"
-import styles from "../styles/styles";//
 import { FlatList, Text, View } from "react-native";
+import Container from "../componants/Container";
+import styles from "../styles/styles";
 
 const CompletedTasks = () => {
   const todos = useSelector((state) =>
@@ -10,11 +11,15 @@ const CompletedTasks = () => {
 
 
   return (
-    <View style={styles.container}>
+    <Container>
       {todos.length === 0 ? (
-        // <View style={styles.container}>
-          <Text>No completed tasks</Text>
-        // </View>
+        <Text style={{
+          fontSize: 20,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginTop: 20,
+          color: '#222'  
+        }}>No completed tasks</Text>
       ) : (
         <FlatList
           data={todos}
@@ -22,7 +27,7 @@ const CompletedTasks = () => {
           renderItem={({ item }) => <TodoItem todo={item} />}
         />
       )}
-    </View>
+    </Container>
   );
 };
 

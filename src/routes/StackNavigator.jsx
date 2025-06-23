@@ -7,16 +7,19 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator>
       <Stack.Screen
         name={PATHS.HOME}
         component={Home}
+        options={{
+          headerShown: false,
+          header: () => null,//
+        }}
       />
       <Stack.Screen
         name={PATHS.DETAILS}
         component={TodoDetails}
         options={{
-          headerShown: true,
           headerTitle: "Details",
         }}
       />

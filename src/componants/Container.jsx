@@ -1,18 +1,19 @@
-// import React from "react";
+import { ImageBackground, View } from "react-native";
+import styles from "../styles/styles";
 
-// const Container = () => {
-//   return (
-//     <View style={styles.container}>
-//       <ImageBackground
-//         source={require("../../assets/20.png")}
-//         style={styles.background}
-//         imageStyle={styles.backgroundImage}
-//       >
-//         <View style={styles.overlay}></View>
-//       </ImageBackground>
-//       {/* <StatusBar style="auto" /> */}
-//     </View>
-//   );
-// };
+const Container = ({ children }) => {
+    return (
+        <ImageBackground
+            source={require("../../assets/13.png")}
+            style={styles.background}
+            imageStyle={styles.backgroundImage}
+        >
+            <View style={styles.container}>
+                {children}
+            </View>
+        </ImageBackground>
+    );
+};
 
-// export default Container;
+export default Container;
+

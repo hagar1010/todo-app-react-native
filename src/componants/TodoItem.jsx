@@ -5,7 +5,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 import { PATHS } from "../routes/Router";
 import { useDispatch } from "react-redux";
-import {toggleCompleted, deleteTodo } from "../redux/slices/TodosSlice";
+import { toggleCompleted, deleteTodo } from "../redux/slices/TodosSlice";
 
 
 const TodoItem = ({ todo }) => {
@@ -29,7 +29,7 @@ const TodoItem = ({ todo }) => {
       { cancelable: true }
     );
   };
-  
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -43,9 +43,10 @@ const TodoItem = ({ todo }) => {
         ) : (
           <Text>{todo.title}</Text>
         )}
+
         <View style={styles.row}>
           <TouchableOpacity onPress={() => confirmDelete(todo.id)}>
-            <EvilIcons name="trash" size={24} color="#fa69b4" />
+            <EvilIcons name="trash" size={28} color="#fa69b4" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => dispatch(toggleCompleted(todo.id))}
@@ -58,6 +59,7 @@ const TodoItem = ({ todo }) => {
         </View>
       </View>
     </TouchableOpacity>
+
   );
 };
 

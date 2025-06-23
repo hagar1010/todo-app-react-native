@@ -33,53 +33,21 @@ export const saveTodos = createAsyncThunk("todos/saveTodos", async (todos) => {
 const todosSlice = createSlice({
     name: "todos",
     initialState: {
-        todos: [
-            {
-                id: "1",
-                title: "Buy groceries",
-                description: "Milk, Bread, Eggs",
-                completed: false,
-            },
-            {
-                id: "2",
-                title: "Walk the dog",
-                description: "30 minutes in the park",
-                completed: false,
-            },
-            {
-                id: "3",
-                title: "Finish homework",
-                description: "Math exercises and reading",
-                completed: false,
-            },
-            {
-                id: "4",
-                title: "Call mom",
-                description: "Check in and see how she is doing",
-                completed: false,
-            },
-            {
-                id: "5",
-                title: "Clean the house",
-                description: "Living room, kitchen, and bathroom",
-                completed: false,
-            },
-        ],
+        todos: [],
         filter: FILTRATION_TYPES.ALL,
     },
     reducers: {
         addTodo: (state, action) => {
             const newTodo = action.payload;
             state.todos.push(newTodo);
-            // state.todos.push(action.payload);
         },
-        // updateTodo: (state, action) => {
-        //     const { id, updates } = action.payload;
-        //     const todoIndex = state.todos.findIndex((todo) => todo.id === id);
-        //     if (todoIndex !== -1) {
-        //         state.todos[todoIndex] = { ...state.todos[todoIndex], ...updates };
-        //     }
-        // },
+        updateTodo: (state, action) => {
+            const { id, updates } = action.payload;
+            const index = state.todos.findIndex(todo => todo.id === id);
+            if (index !== -1) {
+                state.todos[index] = { ...state.todos[index], ...updates };
+            }
+        },
         deleteTodo: (state, action) => {
             const id = action.payload;
             state.todos = state.todos.filter((todo) => todo.id !== id);
@@ -103,7 +71,7 @@ const todosSlice = createSlice({
     }
 })
 
-export const { addTodo, deleteTodo, toggleCompleted, updateFilter } = todosSlice.actions;
+export const { addTodo, deleteTodo, toggleCompleted, updateFilter, updateTodo  } = todosSlice.actions;
 export default todosSlice;
 
 

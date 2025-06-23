@@ -1,26 +1,65 @@
-import { Text, View, StyleSheet } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { Text, TextInput, Alert, TouchableOpacity } from "react-native";
+import { useRoute, useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateTodo } from "../redux/slices/TodosSlice";
+import Container from "../componants/Container";
+import styles from "../styles/styles";
 
 const TodoDetails = () => {
   const route = useRoute();
+  const navigation = useNavigation();
   const { todo } = route.params;
 
+  const dispatch = useDispatch();
+  // const todos = useSelector((state) => state.todos.todos);
+
+  const [title, setTitle] = useState(todo.title);
+  const [description, setDescription] = useState(todo.description);
+
+  const handleSave = () => {
+    if (!title.trim()) {
+      Alert.alert("Validation", "Title is required");
+      return;
+    }
+    dispatch(updateTodo({
+      id: todo.id,
+      updates: {
+        title,
+        description,
+      }
+    }));
+    navigation.goBack();
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{todo.title}</Text>
-      <Text style={styles.description}>{todo.description}</Text>
+    <Container>
+      <Text style={[styles.label, { marginTop: 15 }]}>Title</Text>
+      <TextInput
+        value={title}
+        onChangeText={setTitle}
+        style={styles.input}
+      />
+
+      <Text style={styles.label}>Description</Text>
+      <TextInput
+        value={description}
+        onChangeText={setDescription}
+        multiline
+        numberOfLines={4}
+        style={[styles.input, styles.textArea]}
+      />
+
       <Text style={styles.status}>
         Status: {todo.completed ? "Completed" : "In Progress"}
       </Text>
-    </View>
+
+      <TouchableOpacity activeOpacity={0.7} onPress={handleSave} style={styles.submitBtn} >
+        <Text style={styles.submitBtnText}>Save Changes</Text>
+      </TouchableOpacity>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: { padding: 20 },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
-  description: { fontSize: 18, marginBottom: 10 },
-  status: { fontSize: 16, color: "#666" },
-});
-
 export default TodoDetails;
+

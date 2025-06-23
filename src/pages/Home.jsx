@@ -2,11 +2,11 @@ import TodoForm from "../componants/TodoForm";
 import TodoList from "../componants/TodoList";
 import styles from "../styles/styles";
 import FilterTabs from "../componants/FilterTabs";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTodos, saveTodos } from "../redux/slices/TodosSlice";
-
+import Container from "../componants/Container";
 
 const Home = () => {
   // const [todos, setTodos] = useState([
@@ -96,28 +96,16 @@ const Home = () => {
     dispatch(saveTodos(todos));
   }, [todos]);
 
-
-
   return (
-    <View style={styles.container}>
-      {/* <ImageBackground
-        source={require("../../assets/20.png")}
-        style={styles.background}
-        imageStyle={styles.backgroundImage}
-      > 
-      <View style={styles.overlay}>*/}
+    <Container>
       <Text style={styles.title}>TO-DO APP</Text>
 
       <TodoForm />
 
       <FilterTabs />
 
-
       <TodoList />
-
-      {/* </View> */}
-      {/* </ImageBackground>  */}
-    </View>
+    </Container>
   );
 };
 

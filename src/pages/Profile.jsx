@@ -1,8 +1,11 @@
 import { Text } from "react-native"
+import Container from "../componants/Container"
 
 const Profile = () => {
   return (
-    <Text>Profile</Text>
+    <Container>
+      <Text>Profile</Text>
+    </Container>
   )
 }
 
